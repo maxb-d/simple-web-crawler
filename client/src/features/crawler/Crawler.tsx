@@ -9,10 +9,12 @@ type Props = {}
 const Crawler = (props: Props) => {
     const [url, setUrl] = useState("")
 
-    const crawl = () => {
-        console.log(url)
-        API.get()
-    }
+    const crawl = async () => {
+      const response = await API.post('/crawler/crawl', {
+          url: url
+      })
+      console.log(response.data)
+  }
 
   return (
     <div>
